@@ -1,17 +1,6 @@
 # Evidencija aktivnosti
 
-## 06.11.2020.
-Pocetak | Kraj
-------- | ----
-14:15   | 18:00
+## 4.1.2022.
 ### Kratki opis promjena
-Definirani zahtjevi aplikacije.
-Dovršena prva faza projekta.
+Osmišljena tema projekta te su odrađene osnovne funkcionalnosti
 
-
-## 22.12.2021.
-Pocetak | Kraj
-------- | ----
-14:15   | 15:15
-### Kratki opis promjena
-Održano predavanje o projektu
