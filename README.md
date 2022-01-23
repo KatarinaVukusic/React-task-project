@@ -30,12 +30,20 @@ Zadnja faza je obrana projekta - nakon završetka finalne verzije svoje aplikaci
 
 # Opis projekta
 ## Kratki opis
-Ovdje ide opis projekta
+Napraviti ću aplikaciju sa popisom obaveza. Kroz aplikaciju ćemo moći unositi te pratiti naše obaveze .Kada izvršimo neku obavezu s popisa, označiti ćemo je kao izvršenom. U slučaju unosa krive obaveze moći ćemo izbrisati/urediti našu obavezu. Popis obaveza ćemo moći filtrirati prema izvršenosti. Imat će i uvid u ukupan broj obaveza, broj izvršenih obaveza i neizvršenih. Aplikacija će imati i kalendar u kojem ćemo moći pratiti broj obaveza za određeni datum. 
+
 ## Tehnologije
 1. Frontend
 2. Backend
 3. Baza
 ## Popis funkcionalnosti
-1. a
-2. b
-3. c
+1. prikaz svih obaveza.
+2. unos novih obaveza.
+3. mogućnost označavanja obaveze kao izvršenom.
+4. brisanje određene obaveze.
+5. uređivanje određene obaveze.
+6. filtriranje obaveza prema izvršenosti.
+7. računanje ukupnog broja obaveza.
+8. računanje broja izvršenih i neizvršenih obaveza.
+9. prikaz kalendara pritiskom na dugme.
+10. prikaz broja obaveza na određenom datumu u kalendaru.
