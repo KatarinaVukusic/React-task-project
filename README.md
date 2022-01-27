@@ -47,3 +47,4 @@ Napraviti ću aplikaciju sa popisom obaveza. Kroz aplikaciju ćemo moći unositi
 8. računanje broja izvršenih i neizvršenih obaveza.
 9. prikaz kalendara pritiskom na dugme.
 10. prikaz broja obaveza na određenom datumu u kalendaru.
+11. prijava korisnika.
