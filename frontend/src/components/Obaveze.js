@@ -1,8 +1,12 @@
 import React from "react";
 
 const Obaveze = ({obaveza}) =>{
-    return(
-        <li>{obaveza.sadrzaj} | {obaveza.datum}</li>
+
+    return(       
+        <tr>
+        <td>{obaveza.sadrzaj}</td>   
+        <td>{obaveza.datum}</td>                  
+        </tr>
     )
 }
 
