@@ -15,3 +15,7 @@ Početak na izradi aplikacije. Kreirala sam frontend dio i napisala sam formu za
 ## 27.3.2022.
 ### Kratki opis promjena
 Napravljena tablica u kojoj se nalaze podaci iz niza. Omogućeno je dodavanje novih obaveza. Rad na izgledu početne stranice.  
+
+## 31.3.2022.
+### Kratki opis promjena
+Kreirala sam backend dio te napravila GET,POST i DELETE.  Na frontendu sam napravila css za komponentu obaveza i gumb za prikaz samo važnih obaveza. U komponenti Obaveza sam napravila uvjetno rendanje podataka u tablicu.
