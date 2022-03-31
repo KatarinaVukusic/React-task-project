@@ -10,6 +10,7 @@ const obaveze = [
   datum: 'Fri Apr 29 2022',
   vazno: true,
   izvrseno: false
+
   },
   {
   id: 2,
@@ -17,6 +18,7 @@ const obaveze = [
   datum: 'Wed Apr 6 2022',
   vazno: false,
   izvrseno: false
+
   },
   {
   id: 3,
@@ -24,6 +26,8 @@ const obaveze = [
   datum: 'Fri Apr 22 2022',
   vazno: true,
   izvrseno: false
+
+  
   }
  ]
 

@@ -11,15 +11,19 @@ const App = (props) => {
     const [unosDatum, postaviDatum]=useState(null)
     const [unosVazno,postaviVazno]=useState(false)
     const [prikaziFormu,postaviPrikaz]=useState(false)
-    
+    const [ispisSvih,postaviIspis]=useState(true)
+   
 
+    const obavezeIspis = ispisSvih 
+    ? obaveze
+    : obaveze.filter(p => p.vazno ===true)
+  
     const Forma =()=>{
       if(prikaziFormu===false)
          postaviPrikaz(true)   
       else
          postaviPrikaz(false)  
     }
-
 
     const noviUnos = (e) => {
 
@@ -52,6 +56,7 @@ const App = (props) => {
     const handleChange = () => {
     
       postaviVazno(!unosVazno);
+     
     
     };
 
@@ -63,15 +68,17 @@ return(
            <tr>
              <th>Obaveza</th>
              <th>Datum</th>
+             <th>Izvrsenost</th>
             </tr>
          </thead>
-         <tbody>                   
-             {obaveze.map(p =>
+         <tbody>                 
+             {obavezeIspis.map(p =>
               <Obaveze key={p.id} obaveza={p}/>
               )}                 
          </tbody>
        </table>
-       <button onClick={Forma}>Unos nove obaveze</button>  
+       <button onClick={Forma}>Unos nove obaveze</button>
+       <button onClick={() => postaviIspis(!ispisSvih)}>Prikaži { ispisSvih ? "samo važne" : "sve"}</button>    
   </div>
 )
 }else{
