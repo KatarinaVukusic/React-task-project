@@ -14,14 +14,16 @@ code {
 
 table {
   border-collapse: collapse;
-  width: 50%;
+  width: 60%;
+  align-content: center;
+
 }
 
 th,
 td {
   border: 0.2px solid #ffff;
   text-align: left;
-  padding: 2px;
+  padding: 1px;
   font-size: 20px;
 }
 
@@ -32,10 +34,13 @@ th {
                           1px 1px 0 #000,
                          1px -1px 0 #000,
                         -1px -1px 0 #000;
+  text-align: center;
+  height: 50px;
 }
 
 td {
   background-color: #e0efe0;
+  text-align: center;
 }
 
 

@@ -1,22 +1,29 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 //import ReactDOM from 'react-dom';
 import Obaveze from './components/Obaveze'
 import './index.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios'
+
 
 const App = (props) => {
-    const [obaveze, postaviObaveze]=useState(props.obaveze)
+    const [obaveze, postaviObaveze]=useState([])
     const [unosSadrzaj, postaviUnos]=useState('')
     const [unosDatum, postaviDatum]=useState(null)
     const [unosVazno,postaviVazno]=useState(false)
     const [prikaziFormu,postaviPrikaz]=useState(false)
     const [ispisSvih,postaviIspis]=useState(true)
    
+    useEffect( () => {
+      axios.get("http://localhost:3001/api/obaveze")
+      .then(res => postaviObaveze(res.data))
+      }, [])
+
 
     const obavezeIspis = ispisSvih 
     ? obaveze
-    : obaveze.filter(p => p.vazno ===true)
+    : obaveze.filter(p => p.izvrseno ===true)
   
     const Forma =()=>{
       if(prikaziFormu===false)
@@ -25,24 +32,50 @@ const App = (props) => {
          postaviPrikaz(false)  
     }
 
+    const promjenaIzvrsenostiObaveze = (id) => {
+      const url = `http://localhost:3001/api/obaveze/${id}`
+      const obaveza = obaveze.find(o => o.id === id)
+      const modObaveza = {
+         ...obaveza,
+         izvrseno: !obaveza.izvrseno
+      }
+      axios.put(url, modObaveza)
+      .then(response => {
+         postaviObaveze(obaveze.map(o => o.id !==id ? o : response.data))
+      })
+
+      console.log("Moramo promijeniti važnost poruke", id);
+    }
+
+    const brisiObavezu = (id) => {
+      
+      axios.delete(`http://localhost:3001/api/obaveze/${id}`)
+      .then(response => {
+      console.log(response);
+      postaviObaveze(obaveze.filter(p => p.id !== id))
+      })
+      }
+
+
     const noviUnos = (e) => {
 
       e.preventDefault()
 
-      console.log(unosDatum)
-      console.log(unosVazno)
-      console.log(unosSadrzaj)
       console.log('Klik',e.target)   
       
       const noviObjekt ={
-        id: obaveze.length +1,
         sadrzaj: unosSadrzaj,
         datum: unosDatum.toString().slice(0,15),
         vazno: unosVazno,
         izvrseno: false
       }
-      postaviObaveze(obaveze.concat(noviObjekt))
-      postaviUnos('')
+      axios
+      .post('http://localhost:3001/api/obaveze',noviObjekt)
+      .then(response => {
+        postaviObaveze(obaveze.concat(response.data))
+        postaviUnos('')
+       
+      })
       postaviDatum(null)
       postaviVazno(false)
       postaviPrikaz(false)
@@ -69,16 +102,22 @@ return(
              <th>Obaveza</th>
              <th>Datum</th>
              <th>Izvrsenost</th>
+             <th>Izbrisi</th>
+             <th>Vaznost</th>
             </tr>
          </thead>
          <tbody>                 
              {obavezeIspis.map(p =>
-              <Obaveze key={p.id} obaveza={p}/>
+              <Obaveze    
+              key={p.id}          
+              obaveza={p} 
+              promjenaIzvrsenosti={ () => promjenaIzvrsenostiObaveze(p.id)}
+              brisiObavezu={() => brisiObavezu(p.id)}/>
               )}                 
          </tbody>
        </table>
        <button onClick={Forma}>Unos nove obaveze</button>
-       <button onClick={() => postaviIspis(!ispisSvih)}>Prikaži { ispisSvih ? "samo važne" : "sve"}</button>    
+       <button onClick={() => postaviIspis(!ispisSvih)}>Prikaži { ispisSvih ? "samo izvršene" : "sve"}</button>    
   </div>
 )
 }else{

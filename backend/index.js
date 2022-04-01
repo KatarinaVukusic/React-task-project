@@ -1,8 +1,11 @@
 
 const http = require('http')
 const express=require('express')
+const cors=require('cors')
+
 const app=express()
 
+app.use(cors())
 app.use(express.json())
 
 let obaveze = [
@@ -29,8 +32,6 @@ let obaveze = [
     }
    ]
 
-
-
 //GET
 app.get('/',(req,res)=> {
     res.send('<h1>Pozdrav od Express servera</h1>')
@@ -55,7 +56,9 @@ app.get('/api/obaveze/:id', (req,res) => {
 //DELETE
 app.delete('/api/obaveze/:id', (req, res) => {
     const id = Number(req.params.id)
-    obaveze = obaveze.filter(o => o.id !== id)
+    console.log("Brisem poruku sa ID:", id);
+    obaveze=obaveze.filter(p => p.id !== id);
+
     res.status(204).end()
    })
   
@@ -63,6 +66,7 @@ app.delete('/api/obaveze/:id', (req, res) => {
 //POST
 app.post('/api/obaveze', (req, res) => {
     const podatak = req.body
+
     if(!podatak.sadrzaj){
     return res.status(400).json({
     error: 'Nedostaje sadržaj'
@@ -70,17 +74,30 @@ app.post('/api/obaveze', (req, res) => {
     }
    
     const obaveza = {
+    id: generirajId(),
     sadrzaj: podatak.sadrzaj,
-    vazno: podatak.vazno,
     datum: podatak.datum,
-    izvrseno: podatak.izvrseno || false,
-    id: generirajId()
+    vazno: podatak.vazno,
+    izvrseno: podatak.izvrseno,
     }
     obaveze = obaveze.concat(obaveza)
    
     res.json(obaveza)
    })
    
+//PUT
+app.put('/api/obaveze/:id',(req,res) => {
+    const podatak=req.body
+    console.log(req.params.id)
+    const id=Number(req.params.id)
+
+    console.log("Promjena izvršenosti obaveze sa ID", id)
+
+    obaveze=obaveze.map(o => o.id !== id ? o : podatak)
+    res.json(podatak)
+})
+
+
 
 const generirajId = () => {
     const maxId = obaveze.length > 0
@@ -89,15 +106,6 @@ const generirajId = () => {
     return maxId + 1
    }
 
-const zahtjevInfo = (req, res, next) => {
-    console.log('Metoda:', req.method)
-    console.log('Putanja:', req.path)
-    console.log('Tijelo:', req.body)
-    console.log('---')
-    next()
-   }
-
-app.use(zahtjevInfo)
 
 
 const PORT = 3001

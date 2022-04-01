@@ -18,4 +18,8 @@ Napravljena tablica u kojoj se nalaze podaci iz niza. Omogućeno je dodavanje no
 
 ## 31.3.2022.
 ### Kratki opis promjena
-Kreirala sam backend dio te napravila GET,POST i DELETE.  Na frontendu sam napravila css za komponentu obaveza i gumb za prikaz samo važnih obaveza. U komponenti Obaveza sam napravila uvjetno rendanje podataka u tablicu.
+Kreirala sam backend dio te napravila GET,POST i DELETE. Na frontendu sam napravila css za komponentu obaveza i gumb za prikaz samo važnih obaveza. U komponenti Obaveza sam napravila uvjetno rendanje podataka u tablicu.
+
+## 1.4.2022.
+### Kratki opis promjena
+Napravljena je komunikacija između frontenda i backenda. Sada možemo brisati obaveze te ih možemo označiti kao izvršene. Radi nam i filter za prikazivanje samo izvršenih obaveza. 
