@@ -23,3 +23,7 @@ Kreirala sam backend dio te napravila GET,POST i DELETE. Na frontendu sam naprav
 ## 1.4.2022.
 ### Kratki opis promjena
 Napravljena je komunikacija između frontenda i backenda. Sada možemo brisati obaveze te ih možemo označiti kao izvršene. Radi nam i filter za prikazivanje samo izvršenih obaveza. 
+
+## 2.4.2022.
+### Kratki opis promjena
+Stvorena je baza na MongoDb-u pomocu modela u backendu. Preinaka GET,POST,PUT,DELETE za rad s podacima iz MongoDB baze. Rad na strukturi aplikacije. Stvoreni su utils,testovi i controllers. Napravljena su 4 testa na backendu(Dodavanje nove obaveze,Brisanje jedne obaveze, Obaveze u JSON formatu, Uspjesno mjenjanje izvršenosti). 
