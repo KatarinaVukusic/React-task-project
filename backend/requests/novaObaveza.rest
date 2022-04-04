@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/obaveze
+Content-Type: application/json
+
+{
+    "sadrzaj": "Napisati domaci",
+    "datum": "Wed 14 Apr 2022",
+    "vazno": true,
+    "izvrseno": false,
+    "korisnik": "624b0197fde7b8db34d476ab"
+}

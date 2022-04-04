@@ -17,7 +17,12 @@ const obavezaSchema = new mongoose.Schema({
  izvrseno: {
      type: Boolean,
      default: false
- }
+ },
+ korisnik: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Korisnik'
+    }
+   
 })
 
 obavezaSchema.set('toJSON', {

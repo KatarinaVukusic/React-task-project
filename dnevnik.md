@@ -27,3 +27,7 @@ Napravljena je komunikacija između frontenda i backenda. Sada možemo brisati o
 ## 2.4.2022.
 ### Kratki opis promjena
 Stvorena je baza na MongoDb-u pomocu modela u backendu. Preinaka GET,POST,PUT,DELETE za rad s podacima iz MongoDB baze. Rad na strukturi aplikacije. Stvoreni su utils,testovi i controllers. Napravljena su 4 testa na backendu(Dodavanje nove obaveze,Brisanje jedne obaveze, Obaveze u JSON formatu, Uspjesno mjenjanje izvršenosti). 
+
+## 4.4.2022.
+### Kratki opis promjena
+Stvoren je model i kontroler za korisnika. Također je stvoren i login kontroler koji provjerava korisnika i sifru te stvara token za korisnika. Kontroler obaveza je modificiran za provjeru je li token ispravan. 

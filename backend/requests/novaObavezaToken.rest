@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/obaveze
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imt2dWt1c2ljIiwiaWQiOiI2MjRiMDE5N2ZkZTdiOGRiMzRkNDc2YWIiLCJpYXQiOjE2NDkwODQ5OTZ9.hVVJ1vzkGzPMLeQnmQp3NIufa5St-XNsvLKSc3ACLYI
+
+{
+    "sadrzaj": "Ocistiti kucu",
+    "datum": "Wed 14 Apr 2022",
+    "vazno": true,
+    "izvrseno": false
+}
