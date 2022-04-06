@@ -31,3 +31,8 @@ Stvorena je baza na MongoDb-u pomocu modela u backendu. Preinaka GET,POST,PUT,DE
 ## 4.4.2022.
 ### Kratki opis promjena
 Stvoren je model i kontroler za korisnika. Također je stvoren i login kontroler koji provjerava korisnika i sifru te stvara token za korisnika. Kontroler obaveza je modificiran za provjeru je li token ispravan. 
+
+
+## 6.4.2022.
+### Kratki opis promjena
+Modificiran je frontend. Napravljena je prijava korisnika u stranicu. Također radi dodavanje novih obaveza i brisanje sa tokenom. Napravljeni su i servisi za login i obaveze koji šalju zahtjeve pomoću axiosa na kontroler u backendu. 

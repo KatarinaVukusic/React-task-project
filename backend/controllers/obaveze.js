@@ -1,7 +1,9 @@
 const obavezaRouter = require('express').Router()
 const Obaveza = require('../models/obaveza')
 const Korisnik = require('../models/korisnik')
+
 const jwt=require('jsonwebtoken')
+const mongoose = require('mongoose')
 
 const dohvatiToken = req => {
     const auth =req.get('authorization')
@@ -31,15 +33,14 @@ obavezaRouter.put('/:id', async (req, res) => {
     if(!token || !dekToken.id){
         return res.status(401).json({error: 'neispravni ili nepostojeći token'})
     } 
-    
-    const vlasnikObaveze= await Korisnik.findById(dekToken.id)
 
     const obaveza = {
-        izvrseno: podatak.izvrseno,      
+        izvrseno: podatak.izvrseno     
     }
 
-    const novaObaveza = await Obaveza.findByIdAndUpdate(vlasnikObaveze.id, obaveza, { new: true })
-    res.json(novaObaveza)
+    await Obaveza.findOneAndUpdate({_id:  mongoose.Types.ObjectId(req.params.id) ,korisnik: mongoose.Types.ObjectId(dekToken.id) }, obaveza)
+
+
 })
 
 obavezaRouter.post('/', async (req, res) => {
@@ -77,13 +78,14 @@ obavezaRouter.delete('/:id', async (req, res) => {
         return res.status(401).json({error: 'neispravni ili nepostojeći token'})
     } 
     
-    const vlasnikObaveze= await Korisnik.findById(dekToken.id)
-    
-    await Obaveza.findByIdAndRemove(vlasnikObaveze.id)
-    .then(result => {
-        res.status(204).end()
-    })
-    .catch(err => next(err))
+    const rez = await Obaveza.findOneAndDelete({_id:  mongoose.Types.ObjectId(req.params.id) ,korisnik: mongoose.Types.ObjectId(dekToken.id) })
+    console.log(rez)
+    if(rez)
+      res.send(rez)
+    else
+      res.status(204).send({message: "Ne postoji traženi podatak"})
+
+
    
 })
 
