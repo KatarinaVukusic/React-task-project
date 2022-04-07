@@ -36,3 +36,7 @@ Stvoren je model i kontroler za korisnika. Također je stvoren i login kontroler
 ## 6.4.2022.
 ### Kratki opis promjena
 Modificiran je frontend. Napravljena je prijava korisnika u stranicu. Također radi dodavanje novih obaveza i brisanje sa tokenom. Napravljeni su i servisi za login i obaveze koji šalju zahtjeve pomoću axiosa na kontroler u backendu. 
+
+## 7.4.2022.
+### Kratki opis promjena
+Uspiješno nam se mijenja izvršenost obaveze. Napravljena je logika za računanje ukupno broja obaveza. Napravljen je test za stvaranje novog korisnika. 

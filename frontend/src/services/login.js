@@ -6,4 +6,5 @@ const prijava = async podaci => {
  return odgovor.data
 }
 
-export default {prijava}
+const Login={prijava}
+export default Login

@@ -16,6 +16,8 @@ const dohvatiToken = req => {
 
 obavezaRouter.get('/', async (req, res) => {
     const obaveza = await Obaveza.find({})
+    const ukupno= 
+
     res.json(obaveza)
 })
 
@@ -38,9 +40,9 @@ obavezaRouter.put('/:id', async (req, res) => {
         izvrseno: podatak.izvrseno     
     }
 
-    await Obaveza.findOneAndUpdate({_id:  mongoose.Types.ObjectId(req.params.id) ,korisnik: mongoose.Types.ObjectId(dekToken.id) }, obaveza)
+   const rez= await Obaveza.findOneAndUpdate({_id:  mongoose.Types.ObjectId(req.params.id) ,korisnik: mongoose.Types.ObjectId(dekToken.id) }, obaveza, {new: true})
 
-
+   res.json(rez);
 })
 
 obavezaRouter.post('/', async (req, res) => {

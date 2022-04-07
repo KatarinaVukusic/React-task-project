@@ -5,10 +5,11 @@ import "./index.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import obavezeAkcije from "./services/obaveze";
-import prijavaAkcije from './services/login'
+import prijavaAkcije from './services/login';
+//import {VictoryBar,VictoryChart,VictoryTheme} from 'victory';
 
 
-const App = (props) => {
+const App = () => {
   const [obaveze, postaviObaveze] = useState([]);
   const [unosSadrzaj, postaviUnos] = useState("");
   const [unosDatum, postaviDatum] = useState(null);
@@ -18,10 +19,14 @@ const App = (props) => {
   const [username, postaviUsername] = useState("");
   const [pass, postaviPass] = useState("");
   const [korisnik, postaviKorisnika] = useState(null)
-
-
+  const [ukupno,postaviUkupno]=useState(0)
+ 
   useEffect(() => {
-    obavezeAkcije.dohvatiSve().then((res) => postaviObaveze(res.data));
+    obavezeAkcije.dohvatiSve().then((res) => {
+      postaviObaveze(res.data)
+      postaviUkupno(res.data.length)  
+    });
+    
   }, []);
 
   useEffect( () => {
@@ -32,7 +37,6 @@ const App = (props) => {
     obavezeAkcije.postaviToken(korisnik.token)
     }
     }, [])
-
 
   const obavezeIspis = ispisSvih
     ? obaveze
@@ -62,6 +66,7 @@ const App = (props) => {
 
   };
 
+
   const promjenaIzvrsenostiObaveze = (id) => {
     const obaveza = obaveze.find((o) => o.id === id);
     const modObaveza = {
@@ -72,13 +77,17 @@ const App = (props) => {
     .then
     ((response) => {
       postaviObaveze(obaveze.map((o) => (o.id !== id ? o : response.data)));
+      
+
     });
   };
 
   const brisiObavezu = (id) => {
     obavezeAkcije.brisi(id).then((response) => {
-      console.log(response);
+
       postaviObaveze(obaveze.filter((p) => p.id !== id));
+      postaviUkupno(obaveze.length -1)   
+  
     });
   };
 
@@ -97,7 +106,9 @@ const App = (props) => {
     .then((response) => {
       postaviObaveze(obaveze.concat(response.data));
       postaviUnos("");
-    });
+      postaviUkupno(obaveze.length+1)    
+      });     
+  
     postaviDatum(null);
     postaviVazno(false);
     postaviPrikaz(false);
@@ -149,7 +160,7 @@ const App = (props) => {
   if (prikaziFormu === false) {
     return (
       <div>
-        <h1>To-do lista</h1>    
+        <h1>To-do lista</h1>   
         {korisnik === null ? loginForma() : <div>
  <p>Prijavljeni ste kao: {korisnik.username}</p>
  {novaObaveza()}
@@ -175,7 +186,8 @@ const App = (props) => {
             ))}
           </tbody>
         </table>
-       
+         <p>{ukupno}</p>
+
       </div>
     );
   } else {

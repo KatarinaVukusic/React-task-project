@@ -3,10 +3,14 @@ const supertest = require('supertest')
 const app = require('../app')
 const obaveza = require('../models/obaveza')
 const pomocni = require('./pomocni_test')
+const Korisnik = require('../models/korisnik')
+const baseUrl = "https://localhost3001/api/obaveze";
+
 
 const api = supertest(app)
 
-beforeEach(async () => {
+
+beforeEach(async () => {   
     await obaveza.deleteMany({})
     let novaObaveza = new obaveza(pomocni.obavezaPocetak[0])
     await novaObaveza.save()
@@ -14,6 +18,8 @@ beforeEach(async () => {
     await novaObaveza.save()
     novaObaveza = new obaveza(pomocni.obavezaPocetak[2])
     await novaObaveza.save()
+  
+  
 })
 
 test('Obaveze u JSON formatu', async () => {
@@ -33,7 +39,7 @@ test('Brisanje jedne obaveze', async () =>{
     expect(ObavezaNaKraju).toHaveLength(pomocni.obavezaPocetak.length - 1)
 })
 
-/*
+
 test('Dodavanje nove obaveze', async () => {
     const novaObaveza = {
         sadrzaj: "Posjet muzeju",
@@ -44,22 +50,24 @@ test('Dodavanje nove obaveze', async () => {
     await api
     .post('/api/obaveze')
     .send(novaObaveza)
-    .expect(500)
+    .expect(401)
+    
 
     const ObavezaNaKraju = await pomocni.obavezaBaza()
     expect(ObavezaNaKraju).toHaveLength(pomocni.obavezaPocetak.length)
 
-})*/
+})
 test('Uspješno mijenjanje izvršenosti', async () => {
     const obavezaPocetak = await pomocni.obavezaBaza()
     const obavezaZaMijenjanje = obavezaPocetak[2]
     const izmjenaObaveza = {
         izvrseno: true
+
     }
     await api
     .put(`/api/obaveze/${obavezaZaMijenjanje.id}`)
     .send(izmjenaObaveza)
-    .expect(200)
+    .expect(401)
     .expect('Content-Type', /application\/json/)
     const obavezaNaKraju = await pomocni.obavezaBaza()
     const izvrseno = obavezaNaKraju.map(o => o.izvrseno)

@@ -37,5 +37,5 @@ const brisi = async id => {
 
    }
 
-
-export default { dohvatiSve, stvori, osvjezi, brisi, postaviToken}
+const Obaveze={ dohvatiSve, stvori, osvjezi, brisi, postaviToken}
+export default Obaveze
