@@ -5,9 +5,15 @@ const obaveza = require('../models/obaveza')
 const pomocni = require('./pomocni_test')
 const Korisnik = require('../models/korisnik')
 const baseUrl = "https://localhost3001/api/obaveze";
-
+const jwt =require('jsonwebtoken')
 
 const api = supertest(app)
+
+
+beforeAll(async () => {
+    const verify = jest.spyOn(jwt, 'verify');
+    verify.mockImplementation(() => () => ({ verified: 'false' }));
+})
 
 
 beforeEach(async () => {   
@@ -29,18 +35,17 @@ test('Obaveze u JSON formatu', async () => {
         .expect('Content-Type', /application\/json/)
 })
 
-test('Brisanje jedne obaveze', async () =>{
+test('Brisanje jedne obaveze bez tokena', async () =>{
     const obavezaPocetak = await pomocni.obavezaBaza()
     const obavezaZaBrisanje = obavezaPocetak[1]   
     await api
     .delete(`/api/obaveze/${obavezaZaBrisanje.id}`)
     .expect(401)
-    const ObavezaNaKraju = await pomocni.obavezaBaza()
-    expect(ObavezaNaKraju).toHaveLength(pomocni.obavezaPocetak.length - 1)
+
 })
 
 
-test('Dodavanje nove obaveze', async () => {
+test('Dodavanje nove obaveze bez tokena', async () => {
     const novaObaveza = {
         sadrzaj: "Posjet muzeju",
         datum: "Fri Apr 27 2022",
@@ -51,13 +56,12 @@ test('Dodavanje nove obaveze', async () => {
     .post('/api/obaveze')
     .send(novaObaveza)
     .expect(401)
-    
 
-    const ObavezaNaKraju = await pomocni.obavezaBaza()
-    expect(ObavezaNaKraju).toHaveLength(pomocni.obavezaPocetak.length)
 
 })
-test('Uspješno mijenjanje izvršenosti', async () => {
+
+
+test('Mijenjanje izvršenosti bez tokena', async () => {
     const obavezaPocetak = await pomocni.obavezaBaza()
     const obavezaZaMijenjanje = obavezaPocetak[2]
     const izmjenaObaveza = {
@@ -69,9 +73,7 @@ test('Uspješno mijenjanje izvršenosti', async () => {
     .send(izmjenaObaveza)
     .expect(401)
     .expect('Content-Type', /application\/json/)
-    const obavezaNaKraju = await pomocni.obavezaBaza()
-    const izvrseno = obavezaNaKraju.map(o => o.izvrseno)
-    expect(izvrseno).toContain(true)
+
 })
 
 afterAll(() => {

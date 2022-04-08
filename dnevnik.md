@@ -40,3 +40,7 @@ Modificiran je frontend. Napravljena je prijava korisnika u stranicu. Također r
 ## 7.4.2022.
 ### Kratki opis promjena
 Uspiješno nam se mijenja izvršenost obaveze. Napravljena je logika za računanje ukupno broja obaveza. Napravljen je test za stvaranje novog korisnika. 
+
+## 8.4.2022.
+### Kratki opis promjena
+Napravljena lažna verifikacija tokena na testovima. Izmjenjeni su testovi: Dodavanje nove obaveze bez tokena,Brisanje jedne obaveze bez tokena i Mjenjanje izvršenosti bez tokena. Napravljen je još jedan test u testovima za korisnike, a to je Korisnici u JSON formatu. Imamo računanje broja izvršenih i neizvršenih obaveza te su prikazani u Donut chartu. Rad na izgledu početne stranice i stranice za unos. 

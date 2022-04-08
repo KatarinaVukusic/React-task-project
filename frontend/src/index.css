@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ebfae9;
 }
 
 code {
@@ -14,11 +15,12 @@ code {
 
 table {
   border-collapse: collapse;
-  width: 60%;
+  width: 80%;
   align-content: center;
-
+  margin-left: 3px;
+  
 }
-
+ 
 th,
 td {
   border: 0.2px solid #ffff;
@@ -43,11 +45,59 @@ td {
   text-align: center;
 }
 
+h1{
+  text-align: center;
+
+
+}
+
+p{
+  text-align: left;
+  
+}
+
+#korisnicko_ime{
+  text-align: center;
+ 
+}
+label{
+  font-size: 30px;
+  text-align: left;
+}
+
+.unos{
+  text-align: left;
+}
+
+input[type=text] {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.gumbovi{
+  font-size: 25px;
+}
+button[type=submit]{
+  font-size: 25px;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+}
 
 
 button {
   border: none;
-  padding: 15px 32px;
+  padding: 10px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -59,4 +109,18 @@ button {
 button:hover {
   background-color: #b5f888;
   color: white;
+}
+#Odustani{
+  font-size: 25px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

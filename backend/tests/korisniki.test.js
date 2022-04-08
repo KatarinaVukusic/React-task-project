@@ -15,6 +15,15 @@ const api = supertest(app)
  await korisnik.save()
  })
 
+ test('Korisnici u JSON formatu', async () => {
+   await api
+       .get('/api/korisnici')
+       .expect(200)
+       .expect('Content-Type', /application\/json/)
+})
+
+
+
  test('stvaranje novog korisnika', async () =>{
     const pocetniKorisnici = await pomocni.korisniciUBazi()
     const novi = {

@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import obavezeAkcije from "./services/obaveze";
 import prijavaAkcije from './services/login';
 //import {VictoryBar,VictoryChart,VictoryTheme} from 'victory';
-
+import DonutChart from 'react-donut-chart';
 
 const App = () => {
   const [obaveze, postaviObaveze] = useState([]);
@@ -20,11 +20,21 @@ const App = () => {
   const [pass, postaviPass] = useState("");
   const [korisnik, postaviKorisnika] = useState(null)
   const [ukupno,postaviUkupno]=useState(0)
+  const [brojIzvrsenih,postaviBrojIzvrsenih]=useState(0)
+  const [brojNeIzvrsenih,postaviBrojNeIzvrsenih]=useState(0)
  
   useEffect(() => {
     obavezeAkcije.dohvatiSve().then((res) => {
       postaviObaveze(res.data)
       postaviUkupno(res.data.length)  
+      const d=res.data
+      d.forEach(element => {
+          if(element.izvrseno===true)
+              postaviBrojIzvrsenih(izvr => izvr +1)
+          else if(element.izvrseno===false)
+               postaviBrojNeIzvrsenih(neizvr=> neizvr +1)
+      });
+
     });
     
   }, []);
@@ -73,12 +83,19 @@ const App = () => {
       ...obaveza,
       izvrseno: !obaveza.izvrseno,
     };
+
+    if(obaveza.izvrseno===false){
+        postaviBrojIzvrsenih(izvr => izvr+1)
+        postaviBrojNeIzvrsenih(neizvr => neizvr - 1)
+    }else if (obaveza.izvrseno===true){
+      postaviBrojIzvrsenih(izvr => izvr-1)
+      postaviBrojNeIzvrsenih(neizvr => neizvr + 1)
+    }
+
     obavezeAkcije.osvjezi(id, modObaveza)
     .then
     ((response) => {
       postaviObaveze(obaveze.map((o) => (o.id !== id ? o : response.data)));
-      
-
     });
   };
 
@@ -87,8 +104,17 @@ const App = () => {
 
       postaviObaveze(obaveze.filter((p) => p.id !== id));
       postaviUkupno(obaveze.length -1)   
-  
+      const d=response.data
+      if(d.izvrseno===true){
+        postaviBrojIzvrsenih(izvr => izvr - 1)
+      }
+      else if(d.izvrseno===false){
+        postaviBrojNeIzvrsenih(neizvr => neizvr - 1)
+      }
+
     });
+  
+ 
   };
 
   const noviUnos = (e) => {
@@ -108,7 +134,7 @@ const App = () => {
       postaviUnos("");
       postaviUkupno(obaveze.length+1)    
       });     
-  
+    postaviBrojNeIzvrsenih(neizvr => neizvr + 1)
     postaviDatum(null);
     postaviVazno(false);
     postaviPrikaz(false);
@@ -147,6 +173,8 @@ const App = () => {
         </form>)
  }
 
+
+
  const novaObaveza = () => {
  return(
  <div>
@@ -157,14 +185,17 @@ const App = () => {
   </div>)
  }
 
-  if (prikaziFormu === false) {
+
+if (prikaziFormu === false) {
     return (
       <div>
         <h1>To-do lista</h1>   
         {korisnik === null ? loginForma() : <div>
- <p>Prijavljeni ste kao: {korisnik.username}</p>
+ <p id="korisnicko_ime">Prijavljeni ste kao: {korisnik.username}</p>
  {novaObaveza()}
  </div>}
+       <div className="row">
+         <div className="column">
         <table>
           <thead>
             <tr>
@@ -186,13 +217,31 @@ const App = () => {
             ))}
           </tbody>
         </table>
-         <p>{ukupno}</p>
-
+        <p>Ukupan broj obaveza: {ukupno}</p>
+        </div>
+        <div className="column">
+        <DonutChart
+         data={[
+    {
+      label: 'Izvrseno',
+      value: brojIzvrsenih,
+    },
+    {
+      label: 'Neizvrseno',
+      value: brojNeIzvrsenih,
+    },
+  ]}
+  colors={['green','grey']}
+/>
+        </div>
+        </div>
       </div>
+      
     );
   } else {
     return (
       <form className="unos" onSubmit={noviUnos}>
+        <h1>Unos nove obaveze</h1>
         <div className="form-group">
           <label>Naziv obaveze:</label>
           <input
@@ -208,7 +257,6 @@ const App = () => {
         </div>
         <div className="form-group">
           <label>Datum: </label>
-
           <DatePicker
             minDate={new Date()}
             selected={unosDatum}
@@ -216,8 +264,10 @@ const App = () => {
             onChange={(datum) => postaviDatum(datum)}
           />
         </div>
+
         <button type="submit">OK</button>
-        <button onClick={Forma}>Odustani</button>
+        <button id="Odustani" onClick={Forma}>Odustani</button>
+
       </form>
     );
   }
