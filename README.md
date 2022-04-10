@@ -1,7 +1,7 @@
 # Projektne faze
 - [x] - Opis projekta
-- [ ] - Početna struktura aplikacije
-- [ ] - Prototip
+- [x] - Početna struktura aplikacije
+- [x] - Prototip
 - [ ] - Konzultacije
 - [ ] - Finalna verzija
 - [ ] - Obrana projekta
@@ -48,3 +48,18 @@ Napraviti ću aplikaciju sa popisom obaveza. Kroz aplikaciju ćemo moći unositi
 9. prikaz kalendara pritiskom na dugme.
 10. prikaz broja obaveza na određenom datumu u kalendaru.
 11. prijava korisnika.
+
+## Početna struktura aplikacije
+Aplikacija se sastoji od frontenda i backenda.
+Unutar njih se nalaze razne podmape i datoteke.
+
+Podmape frontend dijela su: coverage(pregled svih proveedenih testova), node_modules(node biblioteka), public(sadrži statičke datoteke koje ne želimo da ih obrađuje webpack), src(srce React aplikacije).
+
+Datoteke koje se nalaze u frontendu su: 
+.gitignore(git datoteka za izostavljanje iz repozitorija), package-lock.json i package.json (skripte, dependency, konfiguracija projekta), README.md(pružanje uputa za korištenje aplikacije), yarn.lock (verzije dependency-a )
+
+
+Podmape backend dijela su: kontroleri (kod za upravljanje rutama), modeli podataka, node_modules(node biblioteka) , request(mapa sa REST API zahtjevima), utils (pomoćni dijelovi aplikacije - middleware).
+
+Datoteke koje se nalaze u backendu su:  .env(environment varijable za lokalno testitanje), 
+.gitignore, app.js (uključeni svi potrebni moduli i redoslijed middleware-a), index.js(glavna datoteka za pokretanje), package-lock.json i package.json.

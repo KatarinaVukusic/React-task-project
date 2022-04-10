@@ -10,7 +10,7 @@ const Obaveze = ({obaveza,promjenaIzvrsenosti,brisiObavezu}) =>{
 
     if(obaveza.izvrseno===false){
       return(       
-        <tr>
+        <tr className="obaveza">
         <td>{obaveza.sadrzaj}</td>   
         <td>{obaveza.datum}</td>  
         <td><button id="izv" onClick={promjenaIzvrsenosti}>{oznakaZaIzvrsenost}</button>        </td>                

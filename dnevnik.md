@@ -44,3 +44,9 @@ Uspiješno nam se mijenja izvršenost obaveze. Napravljena je logika za računan
 ## 8.4.2022.
 ### Kratki opis promjena
 Napravljena lažna verifikacija tokena na testovima. Izmjenjeni su testovi: Dodavanje nove obaveze bez tokena,Brisanje jedne obaveze bez tokena i Mjenjanje izvršenosti bez tokena. Napravljen je još jedan test u testovima za korisnike, a to je Korisnici u JSON formatu. Imamo računanje broja izvršenih i neizvršenih obaveza te su prikazani u Donut chartu. Rad na izgledu početne stranice i stranice za unos. 
+
+## 10.4.2022.
+### Kratki opis promjena
+Napravljena 3 testa za frontend testiranje: renderiranje sadrzaja, poziv event handlera za izvrseno false te poziv event handlera za izvrseno true. Napisana je početna struktura aplikacije. 
+
+
