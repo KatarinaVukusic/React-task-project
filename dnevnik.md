@@ -49,4 +49,6 @@ Napravljena lažna verifikacija tokena na testovima. Izmjenjeni su testovi: Doda
 ### Kratki opis promjena
 Napravljena 3 testa za frontend testiranje: renderiranje sadrzaja, poziv event handlera za izvrseno false te poziv event handlera za izvrseno true. Napisana je početna struktura aplikacije. 
 
-
+## 15.4.2022.
+### Kratki opis promjena
+Napravljen je kalendar na kojemu su prikazane obaveze. Napravljeno je i sortiranje tablice po datumu. Možemo sortirati uzlazno ili silazno. Sve datoteke sam formatirala. 

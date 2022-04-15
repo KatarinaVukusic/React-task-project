@@ -2,8 +2,8 @@
 - [x] - Opis projekta
 - [x] - Početna struktura aplikacije
 - [x] - Prototip
-- [ ] - Konzultacije
-- [ ] - Finalna verzija
+- [x] - Konzultacije
+- [X] - Finalna verzija
 - [ ] - Obrana projekta
 
 ## Opis projekta
@@ -48,6 +48,7 @@ Napraviti ću aplikaciju sa popisom obaveza. Kroz aplikaciju ćemo moći unositi
 9. prikaz kalendara pritiskom na dugme.
 10. prikaz broja obaveza na određenom datumu u kalendaru.
 11. prijava korisnika.
+12. Sortiranje podataka po datumu.
 
 ## Početna struktura aplikacije
 Aplikacija se sastoji od frontenda i backenda.

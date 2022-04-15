@@ -1,10 +1,11 @@
-require('dotenv').config()
+require("dotenv").config();
 
-const PORT = process.env.PORT
-const password = process.env.ATLAS_PASS
-const user = process.env.ATLAS_USER
-const dbname = process.env.NODE_ENV === 'test' ? 'obaveze-api-test':'obaveze-baza'
+const PORT = process.env.PORT;
+const password = process.env.ATLAS_PASS;
+const user = process.env.ATLAS_USER;
+const dbname =
+  process.env.NODE_ENV === "test" ? "obaveze-api-test" : "obaveze-baza";
 
-const DB_URI = `mongodb+srv://${user}:${password}@cluster0.odqjh.mongodb.net/${dbname}?retryWrites=true&w=majority`
+const DB_URI = `mongodb+srv://${user}:${password}@cluster0.odqjh.mongodb.net/${dbname}?retryWrites=true&w=majority`;
 
-module.exports = {PORT, DB_URI}
+module.exports = { PORT, DB_URI };

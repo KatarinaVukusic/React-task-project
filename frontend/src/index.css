@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9,7 +9,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -18,9 +18,8 @@ table {
   width: 80%;
   align-content: center;
   margin-left: 3px;
-  
 }
- 
+
 th,
 td {
   border: 0.2px solid #ffff;
@@ -32,10 +31,8 @@ td {
 th {
   background-color: #bbf1bb;
   color: #ffffff;
-  text-shadow: -1px 1px 0 #000,
-                          1px 1px 0 #000,
-                         1px -1px 0 #000,
-                        -1px -1px 0 #000;
+  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+    -1px -1px 0 #000;
   text-align: center;
   height: 50px;
 }
@@ -45,46 +42,41 @@ td {
   text-align: center;
 }
 
-h1{
+h1 {
   text-align: center;
-
-
 }
 
-p{
+p {
   text-align: left;
-  
 }
 
-#korisnicko_ime{
+#korisnicko_ime {
   text-align: center;
- 
 }
-label{
+label {
   font-size: 30px;
   text-align: left;
 }
 
-.unos{
+.unos {
   text-align: left;
 }
 
-input[type=text] {
+input[type="text"] {
   width: 20%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
 }
 
-.gumbovi{
+.gumbovi {
   font-size: 25px;
 }
-button[type=submit]{
+button[type="submit"] {
   font-size: 25px;
 }
 
-input[type=checkbox]
-{
+input[type="checkbox"] {
   /* Double-sized Checkboxes */
   -ms-transform: scale(2); /* IE */
   -moz-transform: scale(2); /* FF */
@@ -93,6 +85,11 @@ input[type=checkbox]
   transform: scale(2);
   padding: 10px;
 }
+
+h4{
+  text-align: center;
+}
+
 
 
 button {
@@ -110,7 +107,7 @@ button:hover {
   background-color: #b5f888;
   color: white;
 }
-#Odustani{
+#Odustani {
   font-size: 25px;
 }
 
