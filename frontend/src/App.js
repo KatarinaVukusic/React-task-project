@@ -88,10 +88,10 @@ const App = () => {
       izvrseno: !obaveza.izvrseno,
     };
 
-    if (obaveza.izvrseno === false) {
+    if (obaveza.izvrseno === false && korisnik!==null) {
       postaviBrojIzvrsenih((izvr) => izvr + 1);
       postaviBrojNeIzvrsenih((neizvr) => neizvr - 1);
-    } else if (obaveza.izvrseno === true) {
+    } else if (obaveza.izvrseno === true && korisnik!==null) {
       postaviBrojIzvrsenih((izvr) => izvr - 1);
       postaviBrojNeIzvrsenih((neizvr) => neizvr + 1);
     }

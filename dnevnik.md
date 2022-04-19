@@ -52,3 +52,7 @@ Napravljena 3 testa za frontend testiranje: renderiranje sadrzaja, poziv event h
 ## 15.4.2022.
 ### Kratki opis promjena
 Napravljen je kalendar na kojemu su prikazane obaveze. Napravljeno je i sortiranje tablice po datumu. Možemo sortirati uzlazno ili silazno. Sve datoteke sam formatirala. 
+
+## 19.4.2022.
+### Kratki opis promjena
+Sitna preinaka da se ne mijenja broj izvrsenih i neizvrsenih ako korisnik nije prijavljen. 
