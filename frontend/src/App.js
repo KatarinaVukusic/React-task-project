@@ -177,7 +177,7 @@ const App = () => {
           Prikaži {ispisSvih ? "samo izvršene" : "sve"}
         </button>
         <button onClick={() => postaviSort(!sortDatum)}>
-          {sortDatum
+          {obavezeDatum
             ? "Sortiraj po datumu uzlazno"
             : "Sortiraj po datumu silazno"}
         </button>

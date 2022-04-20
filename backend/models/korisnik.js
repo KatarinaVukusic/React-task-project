@@ -23,7 +23,6 @@ korisnikSchema.set("toJSON", {
     ret.id = ret._id.toString();
     delete ret._id;
     delete ret.__v;
-    // Lozinka se ne bi trebala prikazati
     delete ret.passHash;
     return ret;
   },

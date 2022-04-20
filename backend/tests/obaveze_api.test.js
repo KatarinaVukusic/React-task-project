@@ -3,8 +3,6 @@ const supertest = require("supertest");
 const app = require("../app");
 const obaveza = require("../models/obaveza");
 const pomocni = require("./pomocni_test");
-const Korisnik = require("../models/korisnik");
-const baseUrl = "https://localhost3001/api/obaveze";
 const jwt = require("jsonwebtoken");
 
 const api = supertest(app);

@@ -4,7 +4,6 @@ const loginRouter = require("express").Router();
 const Korisnik = require("../models/korisnik");
 
 loginRouter.post("/", async (req, res) => {
-  // Tijelo rute
   const podaci = req.body;
 
   const korisnik = await Korisnik.findOne({ username: podaci.username });
