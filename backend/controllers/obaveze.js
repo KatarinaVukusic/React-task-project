@@ -15,7 +15,7 @@ const dohvatiToken = (req) => {
 
 obavezaRouter.get("/", async (req, res) => {
   const obaveza = await Obaveza.find({});
-  const ukupno = res.json(obaveza);
+  res.json(obaveza);
 });
 
 obavezaRouter.get("/:id", async (req, res) => {
