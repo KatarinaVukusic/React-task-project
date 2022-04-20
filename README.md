@@ -41,14 +41,13 @@ Napraviti ću aplikaciju sa popisom obaveza. Kroz aplikaciju ćemo moći unositi
 2. unos novih obaveza.
 3. mogućnost označavanja obaveze kao izvršenom.
 4. brisanje određene obaveze.
-5. uređivanje određene obaveze.
+5. prikaz broja izvršenih i neizvršenih u piti.
 6. filtriranje obaveza prema izvršenosti.
 7. računanje ukupnog broja obaveza.
 8. računanje broja izvršenih i neizvršenih obaveza.
-9. prikaz kalendara pritiskom na dugme.
-10. prikaz broja obaveza na određenom datumu u kalendaru.
-11. prijava korisnika.
-12. Sortiranje podataka po datumu.
+9. prikaz broja obaveza na određenom datumu u kalendaru.
+10. prijava korisnika.
+11. Sortiranje podataka po datumu.
 
 ## Početna struktura aplikacije
 Aplikacija se sastoji od frontenda i backenda.
